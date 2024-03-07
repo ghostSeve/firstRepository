@@ -1,0 +1,38 @@
+server:
+  port: 8866
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.55.171.221:3306/dp_vote?serverTimezone=Asia/Shanghai
+    username: dp_vote
+    password: 123456
+  resources:
+    # 静态文件地址，保留官方内容后，进行追加
+    static-locations: classpath:/static,classpath:/public,classpath:/resources,classpath:/META-INF/resources,file:image
+  mvc:
+    static-path-pattern: /image/**
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+
+weixin:
+  jscode2sessionUrl: https://api.weixin.qq.com/sns/jscode2session
+  appid: wx045d293d813c6631
+  secret: b2729d17de000966c7160ce51d0023a3
+
+userImagesFilePath: ./image/userAvatar/
+
+coverImagesFilePath: ./image/coverImgs/
+
+voteItemImagesFilePath: ./image/voteItemImgs/
